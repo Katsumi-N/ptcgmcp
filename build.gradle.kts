@@ -2,16 +2,21 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
+    kotlin("plugin.serialization") version "2.1.20"
+    application
 }
 
 group = "com.example"
 version = "0.0.1"
 
-application {
-    mainClass = "io.ktor.server.netty.EngineMain"
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
-    val isDevelopment: Boolean = project.ext.has("development")
-    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
+application {
+    mainClass.set("com.example.MainKt")
 }
 
 repositories {
@@ -19,14 +24,10 @@ repositories {
 }
 
 val exposedVersion: String by project
+val slf4jVersion = "2.0.9"
 
 dependencies {
-    implementation(libs.ktor.server.core)
-    implementation(libs.ktor.server.netty)
-    implementation(libs.logback.classic)
-    implementation(libs.ktor.server.core)
-    implementation(libs.ktor.server.config.yaml)
-    testImplementation(libs.ktor.server.test.host)
+    implementation("org.slf4j:slf4j-nop:$slf4jVersion")
     testImplementation(libs.kotlin.test.junit)
 
     // kotest
@@ -34,7 +35,6 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.8.1")
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:2.0.0")
     testImplementation("io.kotest:kotest-property:5.8.1")
-    implementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
 
     // Exposed
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
@@ -52,4 +52,7 @@ dependencies {
     // Arrow
     implementation("io.arrow-kt:arrow-core:2.0.1")
     implementation("io.arrow-kt:arrow-fx-coroutines:2.0.1")
+
+    // MCP
+    implementation("io.modelcontextprotocol:kotlin-sdk:0.4.0")
 }
