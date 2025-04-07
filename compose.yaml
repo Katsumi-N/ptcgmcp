@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ptcgmcp-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: ptcgmcpdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./sql/my.cnf:/etc/mysql/conf.d/my.cnf
+volumes:
+  mysql-data:
+    driver: "local"
