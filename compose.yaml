@@ -13,6 +13,23 @@ services:
         target: /var/lib/mysql
       - ./sql:/docker-entrypoint-initdb.d
       - ./sql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+  meilisearch:
+    image: getmeili/meilisearch:prototype-japanese-184
+    container_name: ptcgmcp-meilisearch
+    environment:
+      - MEILI_MASTER_KEY=DevelopmentMasterKey
+      - MEILI_ENV=development
+    ports:
+      - "7700:7700"
+    volumes:
+      - type: volume
+        source: meilisearch-data
+        target: /meili_data
+    restart: unless-stopped
+
 volumes:
   mysql-data:
+    driver: "local"
+  meilisearch-data:
     driver: "local"

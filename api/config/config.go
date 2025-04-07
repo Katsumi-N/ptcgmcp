@@ -11,10 +11,9 @@ import (
 )
 
 type Config struct {
-	Server         Server
-	DB             DBConfig
-	ESConfig       ESConfig
-	FrontendConfig FrontendConfig
+	Server      Server
+	DB          DBConfig
+	MeiliConfig MeiliConfig
 }
 
 type DBConfig struct {
@@ -30,17 +29,12 @@ type Server struct {
 	Port    string `envconfig:"PORT"`
 }
 
-// Removed the leftover 'type JWT struct {' line
-
-type FrontendConfig struct {
-	BaseUrl string `envconfig:"FRONTEND_BASE_URL"`
-}
-
-// Restoring the ESConfig struct definition
-type ESConfig struct {
-	EsHost     string `envconfig:"ES_HOST"`
-	EsPort     string `envconfig:"ES_PORT"`
-	EsProtocol string `envconfig:"ES_PROTOCOL"`
+// MeiliConfig Meilisearchの設定
+type MeiliConfig struct {
+	Host     string `envconfig:"MEILI_HOST"`
+	Port     string `envconfig:"MEILI_PORT"`
+	Protocol string `envconfig:"MEILI_PROTOCOL"`
+	ApiKey   string `envconfig:"MEILI_API_KEY"`
 }
 
 var (
