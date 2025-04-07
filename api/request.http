@@ -1,5 +1,5 @@
 ### 検索API
-http://localhost:8080/v1/cards/search?q=リザードン
+http://localhost:8080/v1/cards/search?q=ペパー&card_type=trainer
 
 ### カード詳細API(ポケモン)
 http://localhost:8080/v1/cards/detail/pokemon/47122

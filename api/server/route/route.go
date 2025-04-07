@@ -4,8 +4,7 @@ import (
 	deckUseCase "api/application/deck"
 	"api/application/detail"
 	"api/application/search"
-	"api/config"
-	elasticQueryService "api/infrastructure/elasticsearch/query_service"
+	meiliQueryService "api/infrastructure/meilisearch/query_service"
 	mysqlQueryService "api/infrastructure/mysql/query_service"
 	"api/infrastructure/mysql/repository"
 	deckPre "api/presentation/deck"
@@ -23,7 +22,6 @@ func InitRoute(e *echo.Echo) {
 	}))
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{config.GetConfig().FrontendConfig.BaseUrl}, // フロントエンドのURLを指定
 		AllowMethods: []string{echo.GET, echo.POST, echo.PUT, echo.DELETE},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderAuthorization},
 	}))
@@ -36,9 +34,10 @@ func InitRoute(e *echo.Echo) {
 }
 
 func cardSearchRoute(g *echo.Group) {
-	pokemonRepository := elasticQueryService.NewPokemonQueryService()
-	trainerRepository := elasticQueryService.NewTrainerQueryService()
-	energyRepository := elasticQueryService.NewEnergyQueryService()
+	// Meilisearchの実装に切り替え
+	pokemonRepository := meiliQueryService.NewPokemonQueryService()
+	trainerRepository := meiliQueryService.NewTrainerQueryService()
+	energyRepository := meiliQueryService.NewEnergyQueryService()
 	searchRepository := search.NewSearchPokemonAndTrainerUseCase(
 		pokemonRepository,
 		trainerRepository,
