@@ -1,0 +1,92 @@
+### 検索API
+http://localhost:8080/v1/cards/search?q=リザードン
+
+### カード詳細API(ポケモン)
+http://localhost:8080/v1/cards/detail/pokemon/47122
+
+### カード詳細API(トレーナー)
+http://localhost:8080/v1/cards/detail/trainer/46802
+
+### カード詳細API(エネルギー)
+http://localhost:8080/v1/cards/detail/energy/27973
+
+### デッキ作成API
+POST http://localhost:8080/v1/decks/create 
+Content-Type: application/json
+
+{
+    "name": "テストデッキ",
+    "description": "テストデッキの説明",
+    "main_card": {
+        "id": 42261,
+        "category": "pokemon"
+    },
+    "sub_card": {
+        "id": 2114,
+        "category": "trainer"
+    },
+    "cards": [
+        {
+            "id": 42261,
+            "category": "pokemon",
+            "quantity": 4
+        },
+        {
+            "id": 2114,
+            "category": "trainer",
+            "quantity": 4
+        },
+        {
+            "id": 46299,
+            "category": "energy",
+            "quantity": 52
+        }
+    ]
+}
+
+### デッキ一覧API
+GET http://localhost:8080/v1/decks
+Content-Type: application/json
+
+### デッキ詳細API
+GET http://localhost:8080/v1/decks/detail/1
+Content-Type: application/json
+
+### デッキ編集API
+POST http://localhost:8080/v1/decks/edit/1
+Content-Type: application/json
+
+{
+    "name": "テストデッキ",
+    "description": "テストデッキの説明",
+    "main_card": {
+        "id": 42261,
+        "category": "pokemon"
+    },
+    "sub_card": {
+        "id": 28017,
+        "category": "trainer"
+    },
+    "cards": [
+        {
+            "id": 42261,
+            "category": "pokemon",
+            "quantity": 4
+        },
+        {
+            "id": 28017,
+            "category": "trainer",
+            "quantity": 4
+        },
+        {
+            "id": 46299,
+            "category": "energy",
+            "quantity": 52
+        }
+    ]
+}
+
+### デッキ削除API
+DELETE http://localhost:8080/v1/decks/delete/1
+Content-Type: application/json
+
