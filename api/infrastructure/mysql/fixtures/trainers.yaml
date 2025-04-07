@@ -1,0 +1,9 @@
+- id: 1
+  name: "ハイパーボール"
+  trainer_type: "グッズ"
+  image_url: "ultraball.png"
+  description: "手札を2枚捨てて好きなポケモンを加える"
+  regulation: "SM1+"
+  expansion: "SM1+"
+  created_at: "2025-01-01 00:00:00"
+  updated_at: "2025-01-01 00:00:00"

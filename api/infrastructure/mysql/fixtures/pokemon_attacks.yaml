@@ -1,0 +1,7 @@
+- id: 1
+  pokemon_id: 1
+  name: "トパーズボルト"
+  required_energy: "草雷鋼"
+  damage: "300"
+  description: "このポケモンについているエネルギーを3個選び、トラッシュする。"
+

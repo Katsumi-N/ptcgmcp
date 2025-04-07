@@ -1,0 +1,11 @@
+- id: 1
+  name: "ピカチュウex"
+  energy_type: "雷"
+  image_url: "pika.png"
+  hp: 200
+  ability: ""
+  ability_description: ""
+  regulation: ""
+  expansion: ""
+  created_at: "2025-01-01 00:00:00"
+  updated_at: "2025-01-01 00:00:00"
