@@ -18,7 +18,7 @@ type pokemon struct {
 type trainer struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
-	TrainerType string `json:"energy_type"`
+	TrainerType string `json:"trainer_type"`
 	ImageURL    string `json:"image_url"`
 }
 

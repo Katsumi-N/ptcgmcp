@@ -29,3 +29,5 @@ replay_pid*
 build/
 
 .gradle
+
+src/main/resources/.env/
