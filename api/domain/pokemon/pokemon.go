@@ -37,8 +37,8 @@ const (
 	Grass     = "草"
 	Steel     = "鋼"
 	Dark      = "悪"
-	Colorless = "無色"
-	Dragon    = "ドラゴン"
+	Colorless = "無"
+	Dragon    = "竜"
 )
 
 var validEnergyTypes = []string{Fire, Water, Electric, Fight, Psychic, Grass, Steel, Dark, Colorless, Dragon}

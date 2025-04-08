@@ -23,12 +23,13 @@ const (
 	Stadium             = "スタジアム"
 	Item                = "グッズ"
 	PokemonsItem        = "ポケモンのどうぐ"
+	THMachine           = "ポケモンのどうぐワザ"
 	AceSpecItem         = "グッズ特別なルール"
 	AceSpecPokemonsItem = "ポケモンのどうぐ特別なルール"
 	AceSpecStadium      = "スタジアム特別なルール"
 )
 
-var validTrainerTypes = []string{Supporter, Stadium, Item, PokemonsItem}
+var validTrainerTypes = []string{Supporter, Stadium, Item, PokemonsItem, THMachine, AceSpecItem, AceSpecPokemonsItem, AceSpecStadium}
 var aceSpecTrainerTypes = []string{AceSpecItem, AceSpecPokemonsItem, AceSpecStadium}
 
 func NewTrainer(id int, name string, trainerType string, description string, imageUrl string, regulation string, expansion string) (*Trainer, error) {
