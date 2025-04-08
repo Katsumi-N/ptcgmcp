@@ -15,31 +15,141 @@ POST http://localhost:8080/v1/decks/create
 Content-Type: application/json
 
 {
-    "name": "テストデッキ",
-    "description": "テストデッキの説明",
+    "name": "サーナイト",
+    "description": "CL宮城2025 準優勝",
     "main_card": {
-        "id": 42261,
+        "id": 42574,
         "category": "pokemon"
     },
     "sub_card": {
-        "id": 2114,
-        "category": "trainer"
+        "id": 47041,
+        "category": "pokemon"
     },
     "cards": [
         {
-            "id": 42261,
+            "id": 42572,
             "category": "pokemon",
-            "quantity": 4
+            "quantity": 3
         },
         {
-            "id": 2114,
+            "id": 42573,
+            "category": "pokemon",
+            "quantity": 2
+        },
+        {
+            "id": 42574,
+            "category": "pokemon",
+            "quantity": 3
+        },
+        {
+            "id": 47041,
+            "category": "pokemon",
+            "quantity": 1
+        },
+        {
+            "id": 43472,
+            "category": "pokemon",
+            "quantity": 1         
+        },
+        {
+            "id": 45746,
+            "category": "pokemon",
+            "quantity": 3
+        },
+        {
+            "id": 44278,
+            "category": "pokemon",
+            "quantity": 1
+        },
+        {
+            "id": 45913,
+            "category": "pokemon",
+            "quantity": 1
+        },
+        {
+            "id": 43272,
+            "category": "pokemon",
+            "quantity": 1
+        },
+        {
+            "id": 46662,
+            "category": "pokemon",
+            "quantity": 2
+        },
+        {
+            "id": 47281,
+            "category": "trainer",
+            "quantity": 1
+        },
+        {
+            "id": 33119,
+            "category": "trainer",
+            "quantity": 3
+        },
+        {
+            "id": 27615,
+            "category": "trainer",
+            "quantity": 3
+        },
+        {
+            "id": 25395,
+            "category": "trainer",
+            "quantity": 3
+        },
+        {
+            "id": 44306,
+            "category": "trainer",
+            "quantity": 2
+        },
+        {
+            "id": 45931,
+            "category": "trainer",
+            "quantity": 3
+        },
+        {
+            "id": 34175,
+            "category": "trainer",
+            "quantity": 2
+        },
+        {
+            "id": 45783,
+            "category": "trainer",
+            "quantity": 1
+        },
+        {
+            "id": 43203,
+            "category": "trainer",
+            "quantity": 3
+        },
+        {
+            "id": 43205,
             "category": "trainer",
             "quantity": 4
         },
         {
-            "id": 46299,
+            "id": 44064,
+            "category": "trainer",
+            "quantity": 3
+        },
+        {
+            "id": 45215,
+            "category": "trainer",
+            "quantity": 2
+        },
+        {
+            "id": 43035,
+            "category": "trainer",
+            "quantity": 2 
+        },
+        {
+            "id": 30043,
             "category": "energy",
-            "quantity": 52
+            "quantity": 3
+        },
+        {
+            "id": 28363,
+            "category": "energy",
+            "quantity": 7
         }
     ]
 }
