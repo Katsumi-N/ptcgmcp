@@ -22,9 +22,17 @@ class PtcgApiClient {
     }
 
     suspend fun searchCards(query: String, cardType: String?): SearchResponse {
-        val response: SearchResponse = client.get("$apiBaseUrl/v1/cards/search") {
+        val response: SearchResponse = client.get("$apiBaseUrl/v1/search/cards") {
             parameter("q", query)
             parameter("card_type", cardType)
+        }.body()
+
+        return response
+    }
+
+    suspend fun searchDecks(query: String): DeckSearchResponse {
+        val response: DeckSearchResponse = client.get("$apiBaseUrl/v1/search/decks") {
+            parameter("q", query)
         }.body()
 
         return response

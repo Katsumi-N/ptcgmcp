@@ -34,6 +34,30 @@ data class EnergyData(
     @SerialName("image_url") val imageUrl: String,
 )
 
+@Serializable
+data class DeckSearchResponse(
+    val decks: List<DeckData>?
+)
+
+@Serializable
+data class DeckData(
+    val id: String,
+    val name: String,
+    val description: String?,
+    @SerialName("main_card") val mainCard: DeckCardData,
+    @SerialName("sub_card") val subCard: DeckCardData?,
+    val cards: List<DeckCardData>,
+)
+
+@Serializable
+data class DeckCardData(
+    val id: String,
+    val name: String,
+    val category: String,
+    @SerialName("image_url") val imageUrl: String?,
+    val quantity: Int,
+)
+
 sealed class CardDetailResponse {
     data class Pokemon(val details: PokemonDetailResponse) : CardDetailResponse()
     data class Trainer(val details: TrainerDetailResponse) : CardDetailResponse()

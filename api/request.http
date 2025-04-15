@@ -1,5 +1,8 @@
-### 検索API
-http://localhost:8080/v1/cards/search?q=炎
+### カード検索
+http://localhost:8080/v1/search/cards?q=炎
+
+### デッキ検索
+http://localhost:8080/v1/search/decks?q=ドラパルト
 
 ### カード詳細API(ポケモン)
 http://localhost:8080/v1/cards/detail/pokemon/47122

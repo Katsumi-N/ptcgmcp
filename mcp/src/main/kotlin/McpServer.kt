@@ -185,6 +185,55 @@ fun configureServer(apiClient: PtcgApiClient): Server {
         }
     }
 
+    server.addTool(
+        name = "search_deck",
+        description = "デッキをキーワード検索",
+        inputSchema = Tool.Input(
+            properties = buildJsonObject {
+                putJsonObject("query") {
+                    put("type", "string")
+                    put("description", "デッキ検索キーワード")
+                }
+            },
+            required = listOf("query")
+        )
+    ) { request ->
+        val query = request.arguments["query"]?.jsonPrimitive?.content
+            ?: return@addTool CallToolResult(
+                content = listOf(TextContent("query is required"))
+            )
+
+        try {
+            val response = apiClient.searchDecks(query)
+            val contentList = mutableListOf<TextContent>()
+
+            contentList.add(TextContent("デッキの検索結果：$query"))
+
+            if (!response.decks.isNullOrEmpty()) {
+                response.decks.forEach { deck ->
+                    contentList.add(TextContent("ID: ${deck.id}, 名前: ${deck.name}"))
+                    contentList.add(TextContent("デッキの説明: ${deck.description}"))
+                    contentList.add(TextContent("メインカード: ${deck.mainCard}"))
+                    contentList.add(TextContent("サブカード: ${deck.subCard}"))
+
+                    // カード一覧
+                    contentList.add(TextContent("デッキに含まれるカード:"))
+                    deck.cards.forEach { card ->
+                        contentList.add(TextContent("ID: ${card.id}, 名前: ${card.name}, カテゴリ: ${card.category}, 枚数: ${card.quantity}"))
+                    }
+                }
+            } else {
+                contentList.add(TextContent("デッキが見つかりませんでした。"))
+            }
+
+            CallToolResult(content = contentList)
+        } catch (e: Exception) {
+            CallToolResult(
+                content = listOf(TextContent("エラーが発生しました: ${e.message}"))
+            )
+        }
+    }
+
     return server
 }
 

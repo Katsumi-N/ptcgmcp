@@ -28,3 +28,24 @@ type energy struct {
 	Description string `json:"description"`
 	ImageURL    string `json:"image_url"`
 }
+
+type searchDeckResponse struct {
+	Result bool            `json:"result"`
+	Decks  []*searchedDeck `json:"decks"`
+}
+
+type searchedDeck struct {
+	ID          int         `json:"id"`
+	Name        string      `json:"name"`
+	Description string      `json:"description"`
+	MainCard    *deckCard   `json:"main_card"`
+	SubCard     *deckCard   `json:"sub_card"`
+	Cards       []*deckCard `json:"cards"`
+}
+type deckCard struct {
+	ID       int    `json:"id"`
+	Name     string `json:"name"`
+	Category string `json:"category"`
+	Quantity int    `json:"quantity"`
+	ImageURL string `json:"image_url"`
+}

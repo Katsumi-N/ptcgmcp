@@ -4,6 +4,7 @@ import (
 	deckUseCase "api/application/deck"
 	"api/application/detail"
 	"api/application/search"
+	searchDeckUseCase "api/application/search/deck"
 	meiliQueryService "api/infrastructure/meilisearch/query_service"
 	mysqlQueryService "api/infrastructure/mysql/query_service"
 	"api/infrastructure/mysql/repository"
@@ -43,10 +44,13 @@ func cardSearchRoute(g *echo.Group) {
 		trainerRepository,
 		energyRepository,
 	)
-	h := searchPre.NewSearchHandler(searchRepository)
+	deckQueryService := meiliQueryService.NewDeckQueryService()
+	searchDeckUseCase := searchDeckUseCase.NewSearchDeckUseCase(deckQueryService)
+	h := searchPre.NewSearchHandler(searchRepository, searchDeckUseCase)
 
-	group := g.Group("/cards")
-	group.GET("/search", h.SearchCardList)
+	group := g.Group("/search")
+	group.GET("/cards", h.SearchCardList)
+	group.GET("/decks", h.SearchDeckList)
 }
 
 func cardDetailRoute(g *echo.Group) {
